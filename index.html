@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-book de Receitas Práticas · Casa do Candango · Júlia Costa Dias</title>
+<style>
+/* ── Reset & Base ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:       #3a7d44;
+  --green-light: #5a9e68;
+  --green-pale:  #eaf4ec;
+
+  --couve:       #2d6a4f;
+  --couve-pale:  #d8ede2;
+  --couve-mid:   #52b788;
+
+  --cenoura:     #d4680a;
+  --cenoura-pale:#fdebd0;
+  --cenoura-mid: #f4a261;
+
+  --alface:      #4b9e41;
+  --alface-pale: #e3f5e1;
+  --alface-mid:  #74c44e;
+
+  --cebolinha:   #5a7fc6;
+  --cebolinha-pale:#dce8fa;
+  --cebolinha-mid: #7da8e8;
+
+  --cream:       #fdf9f4;
+  --beige:       #f5ede0;
+  --text:        #2d2d2d;
+  --text-light:  #666;
+  --white:       #ffffff;
+  --radius:      16px;
+  --shadow:      0 4px 24px rgba(0,0,0,.10);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ── Progress bar ──────────────────────────────────── */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  width: 0%; height: 3px;
+  background: linear-gradient(90deg, var(--green), #a8d5b5);
+  z-index: 300; transition: width .1s;
+}
+
+/* ── Topbar ────────────────────────────────────────── */
+.topbar {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--green);
+  color: #fff;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 58px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.topbar-logo { font-size: .98rem; font-weight: 700; letter-spacing: .3px; }
+.topbar-logo span { opacity: .7; font-weight: 400; font-size: .85rem; }
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: #fff; margin: 5px 0; border-radius: 2px; transition: all .3s;
+}
+
+/* ── Layout ────────────────────────────────────────── */
+.layout { display: flex; min-height: calc(100vh - 58px); }
+
+/* ── Sidebar ───────────────────────────────────────── */
+.sidebar {
+  width: 272px; flex-shrink: 0;
+  background: var(--white);
+  border-right: 1px solid #e0dbd3;
+  position: sticky; top: 58px;
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+  padding: 20px 0;
+}
+.sidebar-section { margin-bottom: 4px; }
+.sidebar-section-title {
+  font-size: .68rem; text-transform: uppercase; letter-spacing: 1.4px;
+  color: var(--text-light); padding: 14px 20px 6px;
+}
+.nav-list { list-style: none; }
+.nav-item a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 20px;
+  text-decoration: none; color: var(--text); font-size: .88rem;
+  transition: background .15s, color .15s;
+  border-left: 3px solid transparent;
+}
+.nav-item a:hover { background: var(--green-pale); color: var(--green); }
+.nav-item a.active {
+  background: var(--green-pale); color: var(--green);
+  border-left-color: var(--green); font-weight: 600;
+}
+.nav-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+/* category colors for nav dots */
+.dot-couve     { background: var(--couve); }
+.dot-cenoura   { background: var(--cenoura); }
+.dot-alface    { background: var(--alface); }
+.dot-cebolinha { background: var(--cebolinha); }
+
+.nav-divider { height: 1px; background: #f0ece7; margin: 6px 0; }
+
+/* ── Main ──────────────────────────────────────────── */
+.main { flex: 1; padding: 40px 48px; max-width: 900px; }
+
+/* ── Cover ─────────────────────────────────────────── */
+#cover {
+  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.cover-top {
+  background: linear-gradient(135deg, #1a4d2e 0%, var(--green) 60%, var(--green-light) 100%);
+  padding: 64px 56px 48px;
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.cover-top::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40h-2'/%3E%3C/g%3E%3C/svg%3E");
+}
+.cover-veggie-icons {
+  position: absolute;
+  top: 28px; right: 40px;
+  font-size: 56px;
+  opacity: .18;
+  display: flex; gap: 8px; flex-wrap: wrap; max-width: 200px; justify-content: flex-end;
+}
+.cover-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff; font-size: .72rem;
+  letter-spacing: 1.4px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 20px; width: fit-content;
+}
+.cover-top h1 {
+  font-size: 2.7rem; font-weight: 800; color: #fff;
+  line-height: 1.1; margin-bottom: 10px;
+}
+.cover-top h1 em {
+  display: block; font-style: normal;
+  font-size: 1.4rem; font-weight: 400; opacity: .85; margin-top: 4px;
+}
+.cover-top p { color: rgba(255,255,255,.85); font-size: .95rem; max-width: 520px; line-height: 1.6; }
+.cover-meta {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  margin-top: 26px;
+}
+.cover-meta-item {
+  display: flex; align-items: center; gap: 7px;
+  color: rgba(255,255,255,.82); font-size: .84rem;
+}
+.cover-bottom {
+  background: var(--white);
+  padding: 24px 56px;
+  display: flex; flex-wrap: wrap; gap: 16px;
+  border-top: 3px solid var(--green-pale);
+}
+.cover-tag-group { display: flex; align-items: center; gap: 8px; }
+.cover-tag-group span:first-child { font-size: .72rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+.veg-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: .78rem; font-weight: 600;
+}
+.veg-badge.couve     { background: var(--couve-pale);     color: var(--couve); }
+.veg-badge.cenoura   { background: var(--cenoura-pale);   color: var(--cenoura); }
+.veg-badge.alface    { background: var(--alface-pale);    color: var(--alface); }
+.veg-badge.cebolinha { background: var(--cebolinha-pale); color: var(--cebolinha); }
+
+/* ── Info card ─────────────────────────────────────── */
+.info-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  box-shadow: var(--shadow);
+  margin-bottom: 28px;
+}
+.info-card h2 { font-size: 1.3rem; color: var(--green); margin-bottom: 14px; font-weight: 700; }
+.info-card p { font-size: .95rem; color: var(--text); margin-bottom: 12px; }
+.info-card p:last-child { margin-bottom: 0; }
+.info-card strong { color: var(--green); }
+
+.info-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px; margin-top: 20px;
+}
+.info-item {
+  background: var(--green-pale);
+  border-radius: 10px; padding: 14px 16px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.info-item .ii-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.info-item .ii-text { font-size: .83rem; color: var(--text); line-height: 1.4; }
+.info-item .ii-text b { display: block; color: var(--green); margin-bottom: 2px; font-size: .78rem; text-transform: uppercase; letter-spacing: .5px; }
+
+/* ── Section header ────────────────────────────────── */
+.cat-header {
+  border-radius: var(--radius);
+  padding: 32px 40px;
+  margin: 48px 0 24px;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 72px;
+}
+.cat-header::before {
+  content: ''; position: absolute; inset: 0;
+}
+.cat-header.couve     { background: linear-gradient(135deg, var(--couve) 0%, var(--couve-mid) 100%); }
+.cat-header.cenoura   { background: linear-gradient(135deg, var(--cenoura) 0%, var(--cenoura-mid) 100%); }
+.cat-header.alface    { background: linear-gradient(135deg, var(--alface) 0%, var(--alface-mid) 100%); }
+.cat-header.cebolinha { background: linear-gradient(135deg, var(--cebolinha) 0%, var(--cebolinha-mid) 100%); }
+
+.cat-header-emoji {
+  position: absolute; right: 32px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 90px; opacity: .18;
+}
+.cat-header-content { position: relative; z-index: 1; }
+.cat-header h2 { font-size: 1.9rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.cat-header p { color: rgba(255,255,255,.85); font-size: .9rem; max-width: 480px; }
+.cat-count {
+  display: inline-block;
+  background: rgba(255,255,255,.2);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff; font-size: .72rem;
+  padding: 3px 12px; border-radius: 20px;
+  margin-top: 10px; letter-spacing: .5px;
+}
+
+/* ── Recipe card ───────────────────────────────────── */
+.recipe { margin-bottom: 32px; scroll-margin-top: 72px; }
+
+.recipe-header {
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 28px 36px;
+  position: relative; overflow: hidden;
+}
+.recipe-header.couve     { background: linear-gradient(135deg, var(--couve) 0%, var(--couve-mid) 100%); }
+.recipe-header.cenoura   { background: linear-gradient(135deg, var(--cenoura) 0%, var(--cenoura-mid) 100%); }
+.recipe-header.alface    { background: linear-gradient(135deg, var(--alface) 0%, var(--alface-mid) 100%); }
+.recipe-header.cebolinha { background: linear-gradient(135deg, var(--cebolinha) 0%, var(--cebolinha-mid) 100%); }
+
+.recipe-header-emoji {
+  position: absolute; right: 32px; top: 50%;
+  transform: translateY(-50%); font-size: 64px; opacity: .2;
+}
+.recipe-header-content { position: relative; z-index: 1; }
+.recipe-header h3 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 4px; line-height: 1.15; }
+.recipe-header p  { color: rgba(255,255,255,.85); font-size: .87rem; }
+.recipe-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+.tag {
+  background: rgba(255,255,255,.2); color: #fff;
+  font-size: .69rem; padding: 3px 11px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.3); letter-spacing: .3px;
+}
+
+.recipe-body {
+  background: var(--white);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.recipe-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.recipe-col { padding: 28px 32px; }
+.recipe-col + .recipe-col { border-left: 1px solid #f0ece7; }
+
+.col-label {
+  font-size: .7rem; text-transform: uppercase;
+  letter-spacing: 1.4px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.col-label::after { content: ''; flex: 1; height: 1px; background: #f0ece7; }
+
+.col-label.couve     { color: var(--couve); }
+.col-label.cenoura   { color: var(--cenoura); }
+.col-label.alface    { color: var(--alface); }
+.col-label.cebolinha { color: var(--cebolinha); }
+
+.ingredient-list { list-style: none; }
+.ingredient-list li {
+  padding: 8px 0; border-bottom: 1px solid #f5f2ee;
+  font-size: .9rem; display: flex; align-items: flex-start; gap: 10px;
+}
+.ingredient-list li::before {
+  content: '✦'; font-size: .55rem; margin-top: 5px; flex-shrink: 0;
+}
+.ingredient-list.couve     li::before { color: var(--couve); }
+.ingredient-list.cenoura   li::before { color: var(--cenoura); }
+.ingredient-list.alface    li::before { color: var(--alface); }
+.ingredient-list.cebolinha li::before { color: var(--cebolinha); }
+
+.steps-list { list-style: none; counter-reset: step; }
+.steps-list li {
+  counter-increment: step;
+  padding: 8px 0 8px 40px;
+  border-bottom: 1px solid #f5f2ee;
+  font-size: .9rem; position: relative;
+}
+.steps-list li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 8px;
+  width: 26px; height: 26px; border-radius: 50%;
+  font-size: .72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; color: #fff;
+}
+.steps-list.couve     li::before { background: var(--couve); }
+.steps-list.cenoura   li::before { background: var(--cenoura); }
+.steps-list.alface    li::before { background: var(--alface); }
+.steps-list.cebolinha li::before { background: var(--cebolinha); }
+
+/* Adaptations badge */
+.adaptations {
+  padding: 16px 32px 20px;
+  border-top: 1px solid #f0ece7;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.adapt-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .77rem; padding: 4px 12px; border-radius: 20px;
+  font-weight: 500;
+}
+.adapt-chip.couve     { background: var(--couve-pale);     color: var(--couve); }
+.adapt-chip.cenoura   { background: var(--cenoura-pale);   color: var(--cenoura); }
+.adapt-chip.alface    { background: var(--alface-pale);    color: var(--alface); }
+.adapt-chip.cebolinha { background: var(--cebolinha-pale); color: var(--cebolinha); }
+
+/* ── Summary (sumário) ────────────────────────────── */
+#sumario { scroll-margin-top: 72px; margin-bottom: 40px; }
+#sumario h2 { font-size: 1.5rem; color: var(--green); margin-bottom: 20px; }
+
+.summary-cats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.summary-cat {
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 2px 14px rgba(0,0,0,.07);
+  text-decoration: none; color: var(--text);
+  transition: transform .2s, box-shadow .2s;
+}
+.summary-cat:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.summary-cat-head {
+  padding: 18px 22px;
+  display: flex; align-items: center; gap: 12px;
+}
+.summary-cat-head.couve     { background: var(--couve); }
+.summary-cat-head.cenoura   { background: var(--cenoura); }
+.summary-cat-head.alface    { background: var(--alface); }
+.summary-cat-head.cebolinha { background: var(--cebolinha); }
+.summary-cat-head .sc-icon  { font-size: 2rem; }
+.summary-cat-head .sc-name  { font-size: 1.1rem; font-weight: 700; color: #fff; }
+.summary-cat-head .sc-count { font-size: .78rem; color: rgba(255,255,255,.75); margin-top: 2px; }
+.summary-cat-body { background: var(--white); padding: 14px 22px; }
+.summary-cat-body ul { list-style: none; }
+.summary-cat-body li {
+  padding: 6px 0; font-size: .85rem;
+  border-bottom: 1px solid #f5f2ee;
+  display: flex; align-items: center; gap: 7px;
+}
+.summary-cat-body li:last-child { border-bottom: none; }
+.summary-cat-body li::before { content: '→'; font-size: .75rem; opacity: .5; }
+
+/* ── Closing ────────────────────────────────────────── */
+.closing-card {
+  background: linear-gradient(135deg, #1a4d2e 0%, var(--green) 100%);
+  border-radius: var(--radius);
+  padding: 48px 52px;
+  color: #fff;
+  margin-bottom: 32px;
+  position: relative; overflow: hidden;
+}
+.closing-card::after {
+  content: '🌱';
+  position: absolute; right: 40px; bottom: 32px;
+  font-size: 100px; opacity: .12;
+}
+.closing-card h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 14px; }
+.closing-card p { opacity: .88; font-size: .95rem; line-height: 1.7; max-width: 560px; margin-bottom: 10px; }
+
+.realizacao {
+  text-align: center; padding: 24px;
+  color: var(--text-light); font-size: .8rem;
+}
+
+/* ── Back to top ────────────────────────────────────── */
+.back-top {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 42px; height: 42px;
+  background: var(--green); color: #fff;
+  border: none; border-radius: 50%;
+  font-size: 1.1rem; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .3s, transform .3s; z-index: 99;
+}
+.back-top.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Overlay ────────────────────────────────────────── */
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.3); z-index: 85;
+}
+.overlay.open { display: block; }
+
+/* ── Responsive Otimizado ────────────────────────────── */
+
+/* Para Tablets e Telas Médias (até 900px) */
+@media (max-width: 900px) {
+  .main { 
+    padding: 24px 18px; 
+    max-width: 100%; 
+  }
+  
+  /* Faz as colunas de Ingredientes e Preparo ficarem uma sob a outra */
+  .recipe-cols { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .recipe-col + .recipe-col { 
+    border-left: none; 
+    border-top: 1px solid #f0ece7; 
+  }
+
+  .summary-cats { 
+    grid-template-columns: 1fr 1fr; 
+  }
+  
+  .cover-top { 
+    padding: 44px 28px; 
+    min-height: 300px; 
+  }
+  
+  .cover-top h1 { 
+    font-size: 2rem; 
+  }
+}
+
+/* Para Celulares (até 720px) */
+@media (max-width: 720px) {
+  .sidebar {
+    position: fixed; 
+    left: -272px; 
+    top: 58px;
+    height: calc(100vh - 58px); 
+    z-index: 90;
+    transition: left .3s;
+    box-shadow: 4px 0 24px rgba(0,0,0,.12);
+  }
+  
+  .sidebar.open { 
+    left: 0; 
+  }
+  
+  .hamburger { 
+    display: block; 
+  }
+  
+  .summary-cats { 
+    grid-template-columns: 1fr; 
+  }
+
+  /* Esconde o nome da autora no topo para sobrar espaço no celular */
+  .topbar-logo span { 
+    display: none; 
+  }
+  
+  .cover-meta { 
+    flex-direction: column; 
+    gap: 10px; 
+  }
+  
+  .recipe-header h3 {
+    font-size: 1.3rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-logo">
+    Casa do Candango <span>· E-book de Receitas Práticas &nbsp;·&nbsp; Júlia Costa Dias</span>
+  </div>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+  <!-- SIDEBAR ─────────────────────────────────────────── -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Navegação</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#cover"   class="nav-link"><span class="nav-icon">🏠</span> Início</a></li>
+        <li class="nav-item"><a href="#intro"   class="nav-link"><span class="nav-icon">📖</span> Sobre o E-book</a></li>
+        <li class="nav-item"><a href="#sumario" class="nav-link"><span class="nav-icon">📋</span> Sumário</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🥬 Couve — 4 receitas</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#couve-arroz"    class="nav-link"><span class="nav-dot dot-couve"></span>Arroz Cremoso com Frango</a></li>
+        <li class="nav-item"><a href="#couve-feijao"   class="nav-link"><span class="nav-dot dot-couve"></span>Caldo de Feijão</a></li>
+        <li class="nav-item"><a href="#couve-cuscuz"   class="nav-link"><span class="nav-dot dot-couve"></span>Cuscuz de Milho</a></li>
+        <li class="nav-item"><a href="#couve-macarrao" class="nav-link"><span class="nav-dot dot-couve"></span>Macarrão com Frango</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🥕 Cenoura — 4 receitas</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#cenoura-bolo"  class="nav-link"><span class="nav-dot dot-cenoura"></span>Bolo de Cenoura</a></li>
+        <li class="nav-item"><a href="#cenoura-torta" class="nav-link"><span class="nav-dot dot-cenoura"></span>Torta Salgada</a></li>
+        <li class="nav-item"><a href="#cenoura-arroz" class="nav-link"><span class="nav-dot dot-cenoura"></span>Arroz Colorido</a></li>
+        <li class="nav-item"><a href="#cenoura-pure"  class="nav-link"><span class="nav-dot dot-cenoura"></span>Purê com Batata</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🥗 Alface — 3 receitas</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#alface-omelete"  class="nav-link"><span class="nav-dot dot-alface"></span>Omelete Assada</a></li>
+        <li class="nav-item"><a href="#alface-bolinho"  class="nav-link"><span class="nav-dot dot-alface"></span>Bolinho com Batata-doce</a></li>
+        <li class="nav-item"><a href="#alface-salada"   class="nav-link"><span class="nav-dot dot-alface"></span>Salada Colorida</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🌿 Cebolinha — 5 receitas</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#cebolinha-pure"       class="nav-link"><span class="nav-dot dot-cebolinha"></span>Purê de Batata</a></li>
+        <li class="nav-item"><a href="#cebolinha-escondi"    class="nav-link"><span class="nav-dot dot-cebolinha"></span>Escondidinho de Mandioca</a></li>
+        <li class="nav-item"><a href="#cebolinha-caldo"      class="nav-link"><span class="nav-dot dot-cebolinha"></span>Caldo de Abóbora</a></li>
+        <li class="nav-item"><a href="#cebolinha-macarrao"   class="nav-link"><span class="nav-dot dot-cebolinha"></span>Macarrão com Pernil</a></li>
+        <li class="nav-item"><a href="#cebolinha-ensopado"   class="nav-link"><span class="nav-dot dot-cebolinha"></span>Ensopado de Mandioca</a></li>
+        <li class="nav-item"><a href="#cebolinha-sopa"       class="nav-link"><span class="nav-dot dot-cebolinha"></span>Sopa de Macarrão</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <ul class="nav-list">
+      <li class="nav-item"><a href="#closing" class="nav-link"><span class="nav-icon">💚</span> Considerações Finais</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN ────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- COVER -->
+    <section id="cover">
+      <div class="cover-top">
+        <div class="cover-veggie-icons">🥬🥕🥗🌿</div>
+        <div class="cover-badge">UAN · Creche Casa do Candango</div>
+        <h1>E-book de Receitas<em>Práticas para a Creche</em></h1>
+        <p>Preparações nutritivas, saborosas e adequadas ao público infantil, desenvolvidas para a Unidade de Alimentação e Nutrição da Casa do Candango.</p>
+        <div class="cover-meta">
+          <div class="cover-meta-item">👶 Crianças de 1 a 3 anos</div>
+          <div class="cover-meta-item">🥣 17 receitas</div>
+          <div class="cover-meta-item">🚫 Sem leite · Sem açúcar</div>
+          <div class="cover-meta-item">🌱 Da horta para a mesa</div>
+        </div>
+        <div style="margin-top:20px; display:flex; align-items:center; gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:1rem;">✍️</div>
+          <div>
+            <div style="color:rgba(255,255,255,.6);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;">Elaborado por</div>
+            <div style="color:#fff;font-weight:700;font-size:1rem;">Júlia Costa Dias e Preceptora: Gabriella Silva</div>
+          </div>
+        </div>
+      </div>
+      <div class="cover-bottom">
+        <div class="cover-tag-group">
+          <span>Vegetais:</span>
+          <span class="veg-badge couve">🥬 Couve</span>
+          <span class="veg-badge cenoura">🥕 Cenoura</span>
+          <span class="veg-badge alface">🥗 Alface</span>
+          <span class="veg-badge cebolinha">🌿 Cebolinha</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE O E-BOOK -->
+    <section id="intro" style="scroll-margin-top:72px; margin-bottom:32px;">
+      <div class="info-card">
+        <h2>O que é este E-book?</h2>
+        <p>Um e-book de receitas é um material digital que reúne preparações culinárias de forma organizada e prática, contendo informações como <strong>ingredientes, modo de preparo e rendimento</strong>. Ele funciona como um guia que facilita o planejamento e a execução das refeições, além de contribuir para a padronização dos processos.</p>
+        <p>Em uma Unidade de Alimentação e Nutrição, especialmente em creches, ele pode ser direcionado ao público infantil com receitas <strong>saudáveis, nutritivas e atrativas</strong>, auxiliando na introdução de novos alimentos e na melhoria da aceitação alimentar.</p>
+        <p>Por ser de fácil acesso e atualização, o e-book também apoia a rotina da equipe, promovendo maior <strong>organização, qualidade e eficiência</strong> no serviço prestado.</p>
+        <div class="info-grid">
+          <div class="info-item"><div class="ii-icon">👶</div><div class="ii-text"><b>Público-alvo</b>Crianças de 1 a 3 anos da Casa do Candango</div></div>
+          <div class="info-item"><div class="ii-icon">🚫</div><div class="ii-text"><b>Sem</b>Leite, açúcar e ingredientes inadequados para a faixa etária</div></div>
+          <div class="info-item"><div class="ii-icon">🌱</div><div class="ii-text"><b>Da horta</b>Receitas com os vegetais cultivados na horta da unidade</div></div>
+          <div class="info-item"><div class="ii-icon">👩‍🍳</div><div class="ii-text"><b>Produção em UAN</b>Quantidades adaptadas para 350 crianças</div></div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h2>A Ação de Intervenção</h2>
+        <p>A ação de intervenção definida para a cozinha da <strong>UAN da Casa do Candango</strong> foi a implantação deste e-book de receitas, com foco principal na <strong>variedade alimentar das crianças da creche</strong>. Essa ação foi escolhida a partir de um projeto realizado pela direção juntamente com a nutricionista e seus estagiários, a fim de facilitar a introdução e aceitação de novos alimentos mudando a forma em que são preparados.</p>
+        <p>A proposta busca <strong>diversificar o cardápio</strong> por meio de preparações mais atrativas, nutritivas e adequadas ao público infantil. Além de estimular o consumo, o e-book contribui para a organização do processo produtivo, funcionando como material de apoio que orienta a equipe quanto à execução das receitas.</p>
+        <p>Como primeiro passo, antes da formulação, foi realizada uma dinâmica priorizando entender os <strong>alimentos mais familiares e mais aceitos pelas crianças</strong>, buscando ter a melhor adesão possível das novas ideias de receitas. Os alimentos votados e escolhidos para o plantio da horta foram <strong>cebolinha, cenoura, alface e couve</strong>.</p>
+        <p>A relevância dessa intervenção se destaca pelo <strong>impacto direto na formação de hábitos alimentares mais saudáveis desde a infância</strong>. Ao tornar as refeições mais variadas e atrativas, a unidade favorece a aceitação de alimentos nutritivos, contribuindo para o desenvolvimento das crianças.</p>
+      </div>
+    </section>
+
+    <!-- SUMÁRIO -->
+    <section id="sumario">
+      <h2>Sumário</h2>
+      <div class="summary-cats">
+        <a href="#cat-couve" class="summary-cat">
+          <div class="summary-cat-head couve">
+            <div class="sc-icon">🥬</div>
+            <div><div class="sc-name">Couve</div><div class="sc-count">4 receitas</div></div>
+          </div>
+          <div class="summary-cat-body">
+            <ul>
+              <li>Arroz Cremoso com Couve e Frango</li>
+              <li>Caldo de Feijão com Couve</li>
+              <li>Cuscuz de Milho com Couve</li>
+              <li>Macarrão com Couve e Frango</li>
+            </ul>
+          </div>
+        </a>
+        <a href="#cat-cenoura" class="summary-cat">
+          <div class="summary-cat-head cenoura">
+            <div class="sc-icon">🥕</div>
+            <div><div class="sc-name">Cenoura</div><div class="sc-count">4 receitas</div></div>
+          </div>
+          <div class="summary-cat-body">
+            <ul>
+              <li>Bolo de Cenoura (Versão Creche)</li>
+              <li>Torta Salgada de Cenoura</li>
+              <li>Arroz Colorido com Cenoura</li>
+              <li>Purê Cremoso de Cenoura com Batata</li>
+            </ul>
+          </div>
+        </a>
+        <a href="#cat-alface" class="summary-cat">
+          <div class="summary-cat-head alface">
+            <div class="sc-icon">🥗</div>
+            <div><div class="sc-name">Alface</div><div class="sc-count">3 receitas</div></div>
+          </div>
+          <div class="summary-cat-body">
+            <ul>
+              <li>Omelete Assada de Alface</li>
+              <li>Bolinho Assado de Alface com Batata-doce</li>
+              <li>Salada Colorida de Alface com Milho</li>
+            </ul>
+          </div>
+        </a>
+        <a href="#cat-cebolinha" class="summary-cat">
+          <div class="summary-cat-head cebolinha">
+            <div class="sc-icon">🌿</div>
+            <div><div class="sc-name">Cebolinha</div><div class="sc-count">5 receitas</div></div>
+          </div>
+          <div class="summary-cat-body">
+            <ul>
+              <li>Purê de Batata com Cebolinha</li>
+              <li>Escondidinho de Mandioca com Frango</li>
+              <li>Caldo Cremoso de Abóbora com Patinho</li>
+              <li>Macarrão Cremoso com Pernil Desfiado</li>
+              <li>Ensopado de Mandioca com Patinho · Sopa de Macarrão</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  COUVE                                            -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div id="cat-couve" class="cat-header couve" style="scroll-margin-top:72px;">
+      <div class="cat-header-emoji">🥬</div>
+      <div class="cat-header-content">
+        <h2>Couve</h2>
+        <p>Rica em ferro, cálcio e vitaminas A, C e K, a couve é um dos vegetais mais nutritivos para a alimentação infantil. Nas receitas abaixo, ela aparece de forma atrativa e palatável para crianças pequenas.</p>
+        <span class="cat-count">4 receitas</span>
+      </div>
+    </div>
+
+    <!-- R1: Arroz Cremoso com Couve -->
+    <article id="couve-arroz" class="recipe">
+      <div class="recipe-header couve">
+        <div class="recipe-header-emoji">🍚</div>
+        <div class="recipe-header-content">
+          <h3>Arroz Cremoso com Couve e Frango</h3>
+          <p>Prato principal completo: carboidrato, proteína e vegetal em uma única preparação cremosa e de fácil aceitação.</p>
+          <div class="recipe-tags">
+            <span class="tag">Prato principal</span>
+            <span class="tag">Proteína</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label couve">🥬 Ingredientes</div>
+            <ul class="ingredient-list couve">
+              <li>12 kg de arroz branco</li>
+              <li>15 kg de frango desfiado</li>
+              <li>6 kg de couve sem talo e bem picada</li>
+              <li>1 L de azeite</li>
+              <li>Água suficiente para cocção</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label couve">📋 Modo de Preparo</div>
+            <ol class="steps-list couve">
+              <li>Higienizar a couve e retirar os talos.</li>
+              <li>Cozinhar o arroz até ficar macio.</li>
+              <li>Cozinhar o frango e desfiar.</li>
+              <li>Refogar a couve no azeite até reduzir o volume e ficar macia.</li>
+              <li>Misturar o frango à couve.</li>
+              <li>Acrescentar o arroz cozido e adicionar água aos poucos para manter textura cremosa.</li>
+              <li>Cozinhar por mais alguns minutos até todos os ingredientes estarem incorporados.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip couve">🚫 Sem leite</span>
+          <span class="adapt-chip couve">🚫 Sem açúcar</span>
+          <span class="adapt-chip couve">✅ Textura macia e segura</span>
+          <span class="adapt-chip couve">✅ Adequado para 1–3 anos</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R2: Caldo de Feijão com Couve -->
+    <article id="couve-feijao" class="recipe">
+      <div class="recipe-header couve">
+        <div class="recipe-header-emoji">🫘</div>
+        <div class="recipe-header-content">
+          <h3>Caldo de Feijão com Couve</h3>
+          <p>O feijão cremoso com couve oferece uma combinação rica em proteína vegetal, ferro e fibras — ideal para o almoço das crianças.</p>
+          <div class="recipe-tags">
+            <span class="tag">Proteína vegetal</span>
+            <span class="tag">Rico em ferro</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label couve">🥬 Ingredientes</div>
+            <ul class="ingredient-list couve">
+              <li>10 kg de feijão carioca</li>
+              <li>5 kg de couve sem talo e picada</li>
+              <li>800 ml de azeite</li>
+              <li>Água suficiente para cocção</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label couve">📋 Modo de Preparo</div>
+            <ol class="steps-list couve">
+              <li>Higienizar o feijão e cozinhar até ficar bem macio.</li>
+              <li>Separar parte do feijão com caldo e bater até formar um creme.</li>
+              <li>Retornar o creme para o restante do feijão.</li>
+              <li>Higienizar a couve, retirar os talos e picar finamente.</li>
+              <li>Adicionar a couve ao caldo e cozinhar até ficar macia.</li>
+              <li>Finalizar com azeite e ajustar a textura, mantendo o caldo cremoso.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip couve">🚫 Sem leite</span>
+          <span class="adapt-chip couve">🚫 Sem açúcar</span>
+          <span class="adapt-chip couve">✅ Textura cremosa</span>
+          <span class="adapt-chip couve">✅ Adequado para 1–3 anos</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R3: Cuscuz de Milho com Couve -->
+    <article id="couve-cuscuz" class="recipe">
+      <div class="recipe-header couve">
+        <div class="recipe-header-emoji">🌽</div>
+        <div class="recipe-header-content">
+          <h3>Cuscuz de Milho com Couve</h3>
+          <p>Uma preparação versátil que une o flocão de milho à couve refogada, resultando em uma textura úmida e saborosa, adequada para pequenos.</p>
+          <div class="recipe-tags">
+            <span class="tag">Carboidrato</span>
+            <span class="tag">Lanche ou acompanhamento</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label couve">🥬 Ingredientes</div>
+            <ul class="ingredient-list couve">
+              <li>10 kg de flocão de milho</li>
+              <li>4 kg de couve picada</li>
+              <li>700 ml de azeite</li>
+              <li>Água suficiente para hidratação</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label couve">📋 Modo de Preparo</div>
+            <ol class="steps-list couve">
+              <li>Higienizar e picar a couve finamente.</li>
+              <li>Refogar a couve até ficar macia.</li>
+              <li>Hidratar o flocão com água até atingir textura úmida.</li>
+              <li>Misturar a couve ao flocão hidratado.</li>
+              <li>Distribuir em cuscuzeiras industriais ou recipientes apropriados.</li>
+              <li>Cozinhar no vapor até o cuscuz ficar macio.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip couve">🚫 Sem leite</span>
+          <span class="adapt-chip couve">🚫 Sem açúcar</span>
+          <span class="adapt-chip couve">✅ Textura macia e úmida</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R4: Macarrão com Couve e Frango -->
+    <article id="couve-macarrao" class="recipe">
+      <div class="recipe-header couve">
+        <div class="recipe-header-emoji">🍝</div>
+        <div class="recipe-header-content">
+          <h3>Macarrão com Couve e Frango</h3>
+          <p>Macarrão sem glúten com frango desfiado e couve: textura bem macia, fácil de mastigar e muito nutritiva para as crianças.</p>
+          <div class="recipe-tags">
+            <span class="tag">Sem glúten</span>
+            <span class="tag">Prato principal</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label couve">🥬 Ingredientes</div>
+            <ul class="ingredient-list couve">
+              <li>12 kg de macarrão sem glúten</li>
+              <li>12 kg de frango desfiado</li>
+              <li>5 kg de couve picada</li>
+              <li>1 L de azeite</li>
+              <li>Água do cozimento do macarrão</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label couve">📋 Modo de Preparo</div>
+            <ol class="steps-list couve">
+              <li>Cozinhar o macarrão até apresentar textura bem macia.</li>
+              <li>Cozinhar o frango e desfiar.</li>
+              <li>Higienizar e picar a couve finamente.</li>
+              <li>Refogar a couve até murchar completamente.</li>
+              <li>Misturar o frango à couve.</li>
+              <li>Acrescentar o macarrão cozido e adicionar parte da água do cozimento para manter umidade.</li>
+              <li>Misturar cuidadosamente até homogeneizar.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip couve">🚫 Sem glúten</span>
+          <span class="adapt-chip couve">🚫 Sem leite</span>
+          <span class="adapt-chip couve">✅ Textura bem macia</span>
+          <span class="adapt-chip couve">✅ Adequado para 1–3 anos</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  CENOURA                                          -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div id="cat-cenoura" class="cat-header cenoura" style="scroll-margin-top:72px;">
+      <div class="cat-header-emoji">🥕</div>
+      <div class="cat-header-content">
+        <h2>Cenoura</h2>
+        <p>Fonte de betacaroteno, vitamina A e antioxidantes, a cenoura é um dos primeiros vegetais aceitos pelas crianças. Com sua suavidade natural, entra bem em pratos doces e salgados.</p>
+        <span class="cat-count">4 receitas</span>
+      </div>
+    </div>
+
+    <!-- R5: Bolo de Cenoura -->
+    <article id="cenoura-bolo" class="recipe">
+      <div class="recipe-header cenoura">
+        <div class="recipe-header-emoji">🎂</div>
+        <div class="recipe-header-content">
+          <h3>Bolo de Cenoura — Versão Creche</h3>
+          <p>Adoçado apenas com banana madura e uva-passa, sem adição de açúcar. Uma sobremesa ou lanche nutritivo com textura macia e cor vibrante.</p>
+          <div class="recipe-tags">
+            <span class="tag">Sem açúcar</span>
+            <span class="tag">Sem leite</span>
+            <span class="tag">Lanche / Sobremesa</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cenoura">🥕 Ingredientes</div>
+            <ul class="ingredient-list cenoura">
+              <li>15 kg de cenoura cozida</li>
+              <li>20 kg de banana madura</li>
+              <li>350 ovos</li>
+              <li>8 kg de farinha de aveia</li>
+              <li>5 kg de uva-passa hidratada</li>
+              <li>1 L de azeite</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cenoura">📋 Modo de Preparo</div>
+            <ol class="steps-list cenoura">
+              <li>Higienizar, descascar e cozinhar a cenoura até ficar macia.</li>
+              <li>Hidratar a uva-passa em água morna.</li>
+              <li>Bater a cenoura, banana, ovos e azeite até formar creme homogêneo.</li>
+              <li>Acrescentar a farinha de aveia e a uva-passa.</li>
+              <li>Misturar até formar massa uniforme.</li>
+              <li>Distribuir em assadeiras untadas.</li>
+              <li>Assar em forno médio até firmar e dourar levemente.</li>
+              <li>Cortar em quadrados pequenos após esfriar.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cenoura">🚫 Sem açúcar adicionado</span>
+          <span class="adapt-chip cenoura">🚫 Sem leite</span>
+          <span class="adapt-chip cenoura">✅ Adoçado naturalmente</span>
+          <span class="adapt-chip cenoura">✅ Textura macia e segura</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R6: Torta Salgada de Cenoura -->
+    <article id="cenoura-torta" class="recipe">
+      <div class="recipe-header cenoura">
+        <div class="recipe-header-emoji">🥧</div>
+        <div class="recipe-header-content">
+          <h3>Torta Salgada de Cenoura</h3>
+          <p>Massa base de cenoura com ovo e aveia, com recheio de frango desfiado. Nutritiva, colorida e com textura agradável para o paladar infantil.</p>
+          <div class="recipe-tags">
+            <span class="tag">Prato principal</span>
+            <span class="tag">Proteína</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cenoura">🥕 Ingredientes</div>
+            <ul class="ingredient-list cenoura">
+              <li>12 kg de cenoura cozida</li>
+              <li>300 ovos</li>
+              <li>6 kg de farinha de aveia</li>
+              <li>12 kg de frango desfiado</li>
+              <li>1 L de azeite</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cenoura">📋 Modo de Preparo</div>
+            <ol class="steps-list cenoura">
+              <li>Cozinhar e amassar a cenoura até formar purê.</li>
+              <li>Misturar ovos, farinha de aveia e azeite.</li>
+              <li>Acrescentar o frango desfiado.</li>
+              <li>Misturar até formar massa cremosa.</li>
+              <li>Distribuir em assadeiras grandes.</li>
+              <li>Assar até firmar completamente.</li>
+              <li>Cortar em porções padronizadas.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cenoura">🚫 Sem leite</span>
+          <span class="adapt-chip cenoura">🚫 Sem açúcar</span>
+          <span class="adapt-chip cenoura">✅ Textura cremosa</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R7: Arroz Colorido com Cenoura -->
+    <article id="cenoura-arroz" class="recipe">
+      <div class="recipe-header cenoura">
+        <div class="recipe-header-emoji">🍱</div>
+        <div class="recipe-header-content">
+          <h3>Arroz Colorido com Cenoura</h3>
+          <p>Preparação completa com arroz, cenoura, milho, ervilha e frango. Visualmente atraente e nutricionalmente equilibrada para crianças de 1 a 3 anos.</p>
+          <div class="recipe-tags">
+            <span class="tag">Sem leite</span>
+            <span class="tag">Sem farinha de trigo</span>
+            <span class="tag">Textura macia</span>
+            <span class="tag">1 a 3 anos</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cenoura">🥕 Ingredientes</div>
+            <ul class="ingredient-list cenoura">
+              <li>12 kg de arroz branco</li>
+              <li>8 kg de cenoura ralada fina</li>
+              <li>5 kg de milho-verde</li>
+              <li>6 kg de ervilha fresca ou congelada</li>
+              <li>12 kg de frango desfiado</li>
+              <li>1 L de azeite</li>
+              <li>Água suficiente para cocção</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cenoura">📋 Modo de Preparo</div>
+            <ol class="steps-list cenoura">
+              <li>Higienizar todos os vegetais corretamente.</li>
+              <li>Descascar e ralar a cenoura em ralador fino.</li>
+              <li>Cozinhar o frango até ficar macio e desfiar.</li>
+              <li>Em panela grande, refogar a cenoura no azeite até ficar macia.</li>
+              <li>Acrescentar o milho e a ervilha e cozinhar por alguns minutos.</li>
+              <li>Adicionar o frango desfiado e misturar bem.</li>
+              <li>Cozinhar o arroz separadamente até ficar macio.</li>
+              <li>Misturar o arroz cozido aos demais ingredientes.</li>
+              <li>Acrescentar um pouco de água para manter a preparação úmida e adequada para crianças pequenas.</li>
+              <li>Cozinhar por mais alguns minutos até todos os ingredientes estarem incorporados.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cenoura">🚫 Sem leite</span>
+          <span class="adapt-chip cenoura">🚫 Sem farinha de trigo</span>
+          <span class="adapt-chip cenoura">✅ Textura macia e segura</span>
+          <span class="adapt-chip cenoura">✅ Produção em UAN / creche</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R8: Purê Cremoso de Cenoura com Batata -->
+    <article id="cenoura-pure" class="recipe">
+      <div class="recipe-header cenoura">
+        <div class="recipe-header-emoji">🥣</div>
+        <div class="recipe-header-content">
+          <h3>Purê Cremoso de Cenoura com Batata</h3>
+          <p>Acompanhamento suave, cremoso e altamente nutritivo. A mistura de batata e cenoura resulta em textura ideal para crianças de 1 a 3 anos.</p>
+          <div class="recipe-tags">
+            <span class="tag">Sem leite</span>
+            <span class="tag">Acompanhamento</span>
+            <span class="tag">1 a 3 anos</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cenoura">🥕 Ingredientes</div>
+            <ul class="ingredient-list cenoura">
+              <li>20 kg de batata</li>
+              <li>10 kg de cenoura</li>
+              <li>1 L de azeite</li>
+              <li>Água suficiente para cocção e ajuste da textura</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cenoura">📋 Modo de Preparo</div>
+            <ol class="steps-list cenoura">
+              <li>Higienizar, descascar e cortar batata e cenoura em pedaços médios.</li>
+              <li>Cozinhar os legumes até ficarem bem macios.</li>
+              <li>Escorrer a água reservando parte do líquido do cozimento.</li>
+              <li>Amassar ou processar os legumes ainda mornos até formar purê homogêneo.</li>
+              <li>Acrescentar o azeite e misturar bem.</li>
+              <li>Adicionar aos poucos a água do cozimento até atingir textura cremosa e úmida.</li>
+              <li>Manter aquecido até o momento de servir.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cenoura">🚫 Sem leite</span>
+          <span class="adapt-chip cenoura">🚫 Sem farinha de trigo</span>
+          <span class="adapt-chip cenoura">✅ Textura cremosa</span>
+          <span class="adapt-chip cenoura">✅ Produção em UAN / creche</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  ALFACE                                           -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div id="cat-alface" class="cat-header alface" style="scroll-margin-top:72px;">
+      <div class="cat-header-emoji">🥗</div>
+      <div class="cat-header-content">
+        <h2>Alface</h2>
+        <p>Hidratante, rica em folato e vitaminas do complexo B, a alface é frequentemente subutilizada em preparações quentes. Nas receitas abaixo, ela entra como ingrediente cozido e integrado, garantindo aceitação pelo público infantil.</p>
+        <span class="cat-count">3 receitas</span>
+      </div>
+    </div>
+
+    <!-- R9: Omelete Assada de Alface -->
+    <article id="alface-omelete" class="recipe">
+      <div class="recipe-header alface">
+        <div class="recipe-header-emoji">🍳</div>
+        <div class="recipe-header-content">
+          <h3>Omelete Assada de Alface</h3>
+          <p>A alface refogada integrada à omelete assada garante uma preparação proteica, macia e com textura agradável para as crianças.</p>
+          <div class="recipe-tags">
+            <span class="tag">Proteica</span>
+            <span class="tag">Sem leite</span>
+            <span class="tag">Forno</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label alface">🥗 Ingredientes</div>
+            <ul class="ingredient-list alface">
+              <li>350 ovos</li>
+              <li>5 kg de alface picada fina</li>
+              <li>3 kg de farinha de aveia</li>
+              <li>700 ml de azeite</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label alface">📋 Modo de Preparo</div>
+            <ol class="steps-list alface">
+              <li>Higienizar e picar a alface finamente.</li>
+              <li>Refogar rapidamente até murchar.</li>
+              <li>Bater os ovos em recipiente grande.</li>
+              <li>Acrescentar farinha de aveia, azeite e alface.</li>
+              <li>Misturar até formar massa homogênea.</li>
+              <li>Distribuir em assadeiras untadas.</li>
+              <li>Assar em forno médio até firmar completamente.</li>
+              <li>Cortar em porções padronizadas.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip alface">🚫 Sem leite</span>
+          <span class="adapt-chip alface">🚫 Sem açúcar</span>
+          <span class="adapt-chip alface">✅ Textura firme e macia</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R10: Bolinho Assado de Alface com Batata-doce -->
+    <article id="alface-bolinho" class="recipe">
+      <div class="recipe-header alface">
+        <div class="recipe-header-emoji">🥔</div>
+        <div class="recipe-header-content">
+          <h3>Bolinho Assado de Alface com Batata-doce</h3>
+          <p>A batata-doce cozida e amassada forma a base deste bolinho, enriquecido com alface e aveia. Ideal como lanche ou acompanhamento.</p>
+          <div class="recipe-tags">
+            <span class="tag">Lanche</span>
+            <span class="tag">Sem leite</span>
+            <span class="tag">Forno</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label alface">🥗 Ingredientes</div>
+            <ul class="ingredient-list alface">
+              <li>15 kg de batata-doce cozida</li>
+              <li>5 kg de alface picada</li>
+              <li>4 kg de farinha de aveia</li>
+              <li>700 ml de azeite</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label alface">📋 Modo de Preparo</div>
+            <ol class="steps-list alface">
+              <li>Higienizar e picar a alface finamente.</li>
+              <li>Cozinhar a batata-doce até ficar macia.</li>
+              <li>Amassar a batata-doce ainda morna.</li>
+              <li>Misturar a alface, farinha de aveia e azeite.</li>
+              <li>Modelar bolinhos pequenos.</li>
+              <li>Distribuir em assadeiras untadas.</li>
+              <li>Assar em forno médio até firmar levemente.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip alface">🚫 Sem leite</span>
+          <span class="adapt-chip alface">🚫 Sem açúcar</span>
+          <span class="adapt-chip alface">✅ Textura macia</span>
+          <span class="adapt-chip alface">✅ Tamanho adequado para pequenos</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R11: Salada Colorida de Alface com Milho -->
+    <article id="alface-salada" class="recipe">
+      <div class="recipe-header alface">
+        <div class="recipe-header-emoji">🥙</div>
+        <div class="recipe-header-content">
+          <h3>Salada Colorida de Alface com Milho</h3>
+          <p>A única preparação fria deste e-book. Visualmente colorida, com alface, milho e cenoura ralada, estimula a percepção visual e a curiosidade alimentar.</p>
+          <div class="recipe-tags">
+            <span class="tag">Salada</span>
+            <span class="tag">Fria</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label alface">🥗 Ingredientes</div>
+            <ul class="ingredient-list alface">
+              <li>8 kg de alface picada fina</li>
+              <li>8 kg de milho cozido</li>
+              <li>8 kg de cenoura cozida ralada</li>
+              <li>800 ml de azeite</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label alface">📋 Modo de Preparo</div>
+            <ol class="steps-list alface">
+              <li>Higienizar corretamente a alface.</li>
+              <li>Picar a alface em tiras bem finas.</li>
+              <li>Cozinhar a cenoura até ficar macia e ralar.</li>
+              <li>Cozinhar o milho até ficar macio.</li>
+              <li>Misturar todos os ingredientes.</li>
+              <li>Acrescentar azeite e misturar bem.</li>
+              <li>Manter refrigerado até servir.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip alface">🚫 Sem leite</span>
+          <span class="adapt-chip alface">🚫 Sem açúcar</span>
+          <span class="adapt-chip alface">✅ Visualmente colorida</span>
+          <span class="adapt-chip alface">✅ Refrigerada até o serviço</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  CEBOLINHA                                        -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div id="cat-cebolinha" class="cat-header cebolinha" style="scroll-margin-top:72px;">
+      <div class="cat-header-emoji">🌿</div>
+      <div class="cat-header-content">
+        <h2>Cebolinha</h2>
+        <p>Com sabor suave e aroma agradável, a cebolinha é um tempero natural que enriquece as preparações sem sobrecarregar o paladar infantil. Apresenta vitamina C, vitamina K e compostos antioxidantes.</p>
+        <span class="cat-count">5 receitas</span>
+      </div>
+    </div>
+
+    <!-- R12: Purê de Batata com Cebolinha -->
+    <article id="cebolinha-pure" class="recipe">
+      <div class="recipe-header cebolinha">
+        <div class="recipe-header-emoji">🥔</div>
+        <div class="recipe-header-content">
+          <h3>Purê de Batata com Cebolinha</h3>
+          <p>O clássico purê de batata enriquecido com cebolinha picada: acompanhamento cremoso, saboroso e muito aceito pelo público infantil.</p>
+          <div class="recipe-tags">
+            <span class="tag">Acompanhamento</span>
+            <span class="tag">Sem leite</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cebolinha">🌿 Ingredientes</div>
+            <ul class="ingredient-list cebolinha">
+              <li>25 kg de batata</li>
+              <li>2 kg de cebolinha picada</li>
+              <li>1 L de azeite</li>
+              <li>Água do cozimento suficiente para ajuste da textura</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cebolinha">📋 Modo de Preparo</div>
+            <ol class="steps-list cebolinha">
+              <li>Higienizar, descascar e cortar as batatas.</li>
+              <li>Cozinhar até ficarem bem macias.</li>
+              <li>Amassar as batatas ainda mornas até formar purê homogêneo.</li>
+              <li>Acrescentar azeite e água do cozimento aos poucos.</li>
+              <li>Misturar a cebolinha picada finamente.</li>
+              <li>Mexer até obter textura cremosa e uniforme.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cebolinha">🚫 Sem leite</span>
+          <span class="adapt-chip cebolinha">🚫 Sem açúcar</span>
+          <span class="adapt-chip cebolinha">✅ Textura cremosa</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R13: Escondidinho de Mandioca com Frango e Cebolinha -->
+    <article id="cebolinha-escondi" class="recipe">
+      <div class="recipe-header cebolinha">
+        <div class="recipe-header-emoji">🫙</div>
+        <div class="recipe-header-content">
+          <h3>Escondidinho de Mandioca com Frango e Cebolinha</h3>
+          <p>Um prato gratinado com purê de mandioca e recheio de frango com cebolinha. Muito atrativo e bem aceito pelas crianças.</p>
+          <div class="recipe-tags">
+            <span class="tag">Prato principal</span>
+            <span class="tag">Proteína</span>
+            <span class="tag">Forno</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cebolinha">🌿 Ingredientes</div>
+            <ul class="ingredient-list cebolinha">
+              <li>25 kg de mandioca cozida</li>
+              <li>15 kg de frango desfiado</li>
+              <li>4 kg de cebolinha picada</li>
+              <li>1 L de azeite</li>
+              <li>Água do cozimento da mandioca</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cebolinha">📋 Modo de Preparo</div>
+            <ol class="steps-list cebolinha">
+              <li>Cozinhar a mandioca até ficar bem macia.</li>
+              <li>Amassar ainda quente até formar purê homogêneo.</li>
+              <li>Acrescentar água do cozimento para manter textura cremosa.</li>
+              <li>Cozinhar o frango e desfiar.</li>
+              <li>Misturar a cebolinha ao frango desfiado.</li>
+              <li>Distribuir metade do purê em assadeiras grandes.</li>
+              <li>Acrescentar o recheio de frango.</li>
+              <li>Cobrir com o restante do purê.</li>
+              <li>Levar ao forno apenas para aquecer e firmar levemente.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cebolinha">🚫 Sem leite</span>
+          <span class="adapt-chip cebolinha">🚫 Sem açúcar</span>
+          <span class="adapt-chip cebolinha">✅ Textura cremosa</span>
+          <span class="adapt-chip cebolinha">✅ Adequado para 1–3 anos</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R14: Caldo Cremoso de Abóbora com Patinho Desfiado -->
+    <article id="cebolinha-caldo" class="recipe">
+      <div class="recipe-header cebolinha">
+        <div class="recipe-header-emoji">🎃</div>
+        <div class="recipe-header-content">
+          <h3>Caldo Cremoso de Abóbora com Patinho Desfiado</h3>
+          <p>O creme de abóbora com patinho desfiado e cebolinha é uma preparação quente, nutritiva e de textura ideal para crianças pequenas.</p>
+          <div class="recipe-tags">
+            <span class="tag">Caldo / Sopa</span>
+            <span class="tag">Proteína</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cebolinha">🌿 Ingredientes</div>
+            <ul class="ingredient-list cebolinha">
+              <li>20 kg de abóbora</li>
+              <li>15 kg de patinho cozido e desfiado</li>
+              <li>3 kg de cebolinha picada</li>
+              <li>1 L de azeite</li>
+              <li>Água suficiente para cocção</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cebolinha">📋 Modo de Preparo</div>
+            <ol class="steps-list cebolinha">
+              <li>Higienizar, descascar e cortar a abóbora.</li>
+              <li>Cozinhar até ficar bem macia.</li>
+              <li>Bater parte da abóbora com a água do cozimento até formar creme.</li>
+              <li>Cozinhar o patinho na pressão até desfiar facilmente.</li>
+              <li>Misturar o patinho ao creme de abóbora.</li>
+              <li>Acrescentar a cebolinha picada e cozinhar por alguns minutos até homogeneizar.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cebolinha">🚫 Sem leite</span>
+          <span class="adapt-chip cebolinha">🚫 Sem açúcar</span>
+          <span class="adapt-chip cebolinha">✅ Textura cremosa ideal</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R15: Macarrão Cremoso com Pernil Desfiado -->
+    <article id="cebolinha-macarrao" class="recipe">
+      <div class="recipe-header cebolinha">
+        <div class="recipe-header-emoji">🍝</div>
+        <div class="recipe-header-content">
+          <h3>Macarrão Cremoso com Pernil Desfiado</h3>
+          <p>Macarrão sem glúten ao molho de creme de abóbora com pernil e cebolinha. Uma combinação nutritiva, saborosa e de fácil aceitação.</p>
+          <div class="recipe-tags">
+            <span class="tag">Sem glúten</span>
+            <span class="tag">Prato principal</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cebolinha">🌿 Ingredientes</div>
+            <ul class="ingredient-list cebolinha">
+              <li>12 kg de macarrão sem glúten</li>
+              <li>18 kg de pernil cozido e desfiado</li>
+              <li>10 kg de abóbora cozida e amassada</li>
+              <li>3 kg de cebolinha picada</li>
+              <li>1 L de azeite</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cebolinha">📋 Modo de Preparo</div>
+            <ol class="steps-list cebolinha">
+              <li>Cozinhar o macarrão até apresentar textura macia.</li>
+              <li>Cozinhar o pernil na pressão até desfiar facilmente.</li>
+              <li>Cozinhar a abóbora até ficar macia e amassar até formar creme.</li>
+              <li>Misturar o creme de abóbora ao pernil desfiado.</li>
+              <li>Acrescentar a cebolinha picada.</li>
+              <li>Misturar ao macarrão adicionando água do cozimento para manter umidade.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cebolinha">🚫 Sem glúten</span>
+          <span class="adapt-chip cebolinha">🚫 Sem leite</span>
+          <span class="adapt-chip cebolinha">✅ Textura macia e úmida</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R16: Ensopado de Mandioca com Patinho -->
+    <article id="cebolinha-ensopado" class="recipe">
+      <div class="recipe-header cebolinha">
+        <div class="recipe-header-emoji">🍲</div>
+        <div class="recipe-header-content">
+          <h3>Ensopado de Mandioca com Patinho</h3>
+          <p>Prato de colher com mandioca macia e patinho desfiado em caldo espesso com cebolinha. Quente, reconfortante e adequado para o público da creche.</p>
+          <div class="recipe-tags">
+            <span class="tag">Ensopado</span>
+            <span class="tag">Proteína</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cebolinha">🌿 Ingredientes</div>
+            <ul class="ingredient-list cebolinha">
+              <li>20 kg de mandioca</li>
+              <li>15 kg de patinho desfiado</li>
+              <li>4 kg de cebolinha picada</li>
+              <li>1 L de azeite</li>
+              <li>Água suficiente para cocção</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cebolinha">📋 Modo de Preparo</div>
+            <ol class="steps-list cebolinha">
+              <li>Cozinhar a mandioca até ficar bem macia.</li>
+              <li>Cozinhar o patinho na pressão até desfiar facilmente.</li>
+              <li>Amassar parte da mandioca para engrossar o caldo.</li>
+              <li>Misturar o patinho à mandioca.</li>
+              <li>Acrescentar a cebolinha picada e cozinhar até atingir textura cremosa e homogênea.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cebolinha">🚫 Sem leite</span>
+          <span class="adapt-chip cebolinha">🚫 Sem açúcar</span>
+          <span class="adapt-chip cebolinha">✅ Caldo cremoso espesso</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- R17: Sopa de Macarrão com Legumes e Patinho -->
+    <article id="cebolinha-sopa" class="recipe">
+      <div class="recipe-header cebolinha">
+        <div class="recipe-header-emoji">🍜</div>
+        <div class="recipe-header-content">
+          <h3>Sopa de Macarrão com Legumes e Patinho</h3>
+          <p>Sopa completa com macarrão sem glúten, cenoura, abóbora, patinho e cebolinha. Um prato nutritivo e equilibrado para crianças de 1 a 3 anos.</p>
+          <div class="recipe-tags">
+            <span class="tag">Sem glúten</span>
+            <span class="tag">Sopa completa</span>
+            <span class="tag">1 a 3 anos</span>
+            <span class="tag">350 crianças</span>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-body">
+        <div class="recipe-cols">
+          <div class="recipe-col">
+            <div class="col-label cebolinha">🌿 Ingredientes</div>
+            <ul class="ingredient-list cebolinha">
+              <li>10 kg de macarrão sem glúten pequeno</li>
+              <li>10 kg de cenoura</li>
+              <li>10 kg de abóbora</li>
+              <li>15 kg de patinho desfiado</li>
+              <li>3 kg de cebolinha picada</li>
+              <li>1 L de azeite</li>
+              <li>Água suficiente para cocção</li>
+            </ul>
+          </div>
+          <div class="recipe-col">
+            <div class="col-label cebolinha">📋 Modo de Preparo</div>
+            <ol class="steps-list cebolinha">
+              <li>Higienizar e cortar os legumes.</li>
+              <li>Cozinhar até ficarem macios.</li>
+              <li>Acrescentar o macarrão e cozinhar até ficar bem macio.</li>
+              <li>Adicionar o patinho desfiado.</li>
+              <li>Acrescentar a cebolinha picada.</li>
+              <li>Cozinhar até formar sopa cremosa e homogênea.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="adaptations">
+          <span class="adapt-chip cebolinha">🚫 Sem glúten</span>
+          <span class="adapt-chip cebolinha">🚫 Sem leite</span>
+          <span class="adapt-chip cebolinha">✅ Textura cremosa e homogênea</span>
+          <span class="adapt-chip cebolinha">✅ Produção em UAN / creche</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ══════════════════════════════════════════════════ -->
+    <!--  CONSIDERAÇÕES FINAIS                             -->
+    <!-- ══════════════════════════════════════════════════ -->
+    <div id="closing" class="closing-card" style="scroll-margin-top:72px; margin-top:48px;">
+      <h2>Considerações Finais</h2>
+      <p>A implantação deste e-book representa um passo importante na <strong>qualificação da alimentação oferecida às crianças da Casa do Candango</strong>. Ao reunir preparações nutritivas, saborosas e adaptadas ao público de 1 a 3 anos, o material contribui diretamente para a formação de hábitos alimentares saudáveis desde a infância.</p>
+      <p>Cada receita foi elaborada respeitando as restrições da faixa etária — sem leite, sem açúcar adicionado e com textura adequada — utilizando ingredientes disponíveis na unidade e valorizando os vegetais cultivados na própria horta: <strong>couve, cenoura, alface e cebolinha</strong>.</p>
+      <p>Paralelamente ao benefício nutricional, o e-book fortalece o trabalho da equipe ao padronizar as preparações, promovendo <strong>maior consistência, qualidade e eficiência</strong> do serviço. Esperamos que este material seja um aliado contínuo na rotina da cozinha e um instrumento de transformação positiva na vida das crianças atendidas.</p>
+    </div>
+
+    <div class="realizacao">
+      UAN · Casa do Candango &nbsp;·&nbsp; E-book de Receitas Práticas &nbsp;·&nbsp; Elaborado por <strong>Júlia Costa Dias</strong>
+    </div>
+
+  </main>
+</div>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Voltar ao topo">↑</button>
+
+<script>
+  // Progress bar
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrollTop    = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (scrollTop / scrollHeight * 100) + '%';
+    document.getElementById('backTop').classList.toggle('visible', scrollTop > 400);
+  });
+  document.getElementById('backTop').addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  );
+
+  // Hamburger
+  const sidebar  = document.getElementById('sidebar');
+  const overlay  = document.getElementById('overlay');
+  const hamburger = document.getElementById('hamburgerBtn');
+  function toggleSidebar(force) {
+    const open = force !== undefined ? force : !sidebar.classList.contains('open');
+    sidebar.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+  }
+  hamburger.addEventListener('click', () => toggleSidebar());
+  overlay.addEventListener('click', () => toggleSidebar(false));
+
+  // Active nav
+  const sections = document.querySelectorAll('[id]');
+  const navLinks  = document.querySelectorAll('.nav-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.scrollIntoView({ block: 'nearest' });
+        }
+      }
+    });
+  }, { rootMargin: '-58px 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  navLinks.forEach(a => a.addEventListener('click', () => toggleSidebar(false)));
+</script>
+</body>
+</html>
